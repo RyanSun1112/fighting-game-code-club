@@ -13,9 +13,6 @@ script = ExtResource("1_2r7y0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_ert17")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D/CollisionShape2D"]
-position = Vector2(326, 166)
-
 [node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(325, 164)
 texture = ExtResource("2_88fa8")
