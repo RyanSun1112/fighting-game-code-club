@@ -11,13 +11,26 @@ config_version=5
 [application]
 
 config/name="Fighting Game Code Club"
-run/main_scene="res://node_2d.tscn"
+run/main_scene="res://Stages/node_2d.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [dotnet]
 
 project/assembly_name="Fighting Game Code Club"
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="walls"
+2d_physics/layer_3="platform"
+2d_physics/layer_4="Ledge"
+2d_physics/layer_5="Blastpoints"
 
 [rendering]
 
