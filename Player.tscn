@@ -1,6 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://buuy21n38os04"]
-
-[ext_resource type="Script" path="res://player.gd" id="1_ma2as"]
+[gd_scene load_steps=6 format=3 uid="uid://co7ko17px0u1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwrf4"]
 size = Vector2(117, 127)
@@ -35,7 +33,6 @@ _data = {
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.75)
-script = ExtResource("1_ma2as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
