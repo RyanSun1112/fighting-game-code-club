@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://pe6ognt25bft"]
+
+[ext_resource type="PackedScene" uid="uid://1vlfftt1wqh2" path="res://Player.tscn" id="1_pvio3"]
+[ext_resource type="PackedScene" uid="uid://crkflqcoqx2ju" path="res://platform.tscn" id="2_7upmu"]
+[ext_resource type="PackedScene" uid="uid://bpkueaeoi4nf0" path="res://Deathzone.tscn" id="3_apm8q"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_7upmu")]
+position = Vector2(0, 200)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("2_7upmu")]
+position = Vector2(100, 200)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("2_7upmu")]
+position = Vector2(200, 200)
+
+[node name="Area2D" parent="." instance=ExtResource("3_apm8q")]
+
+[node name="CharacterBody2D" parent="Area2D" instance=ExtResource("1_pvio3")]
+position = Vector2(0, -700)
+
+[connection signal="body_entered" from="Area2D" to="Area2D/CharacterBody2D" method="_on_area_2d_body_entered"]

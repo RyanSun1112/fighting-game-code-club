@@ -27,3 +27,6 @@ func _physics_process(delta: float) -> void:
 func _input(InputEvent):
 	pass
 	
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	position.y = -800
