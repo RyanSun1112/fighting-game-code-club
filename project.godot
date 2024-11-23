@@ -11,13 +11,9 @@ config_version=5
 [application]
 
 config/name="Fighting Game Code Club"
-<<<<<<< HEAD
 run/main_scene="res://stages/node_2d.tscn"
-=======
-run/main_scene="res://Main.tscn"
->>>>>>> ec8ebe7cfd8fd3c70c85e642c86a4910460e240c
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+<<<<<<<HEADrun/main_scene="res://stages/node_2d.tscn"
 
 [display]
 
