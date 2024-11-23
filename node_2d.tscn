@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8lf7nc8xjd7u"]
+
+[ext_resource type="Texture2D" uid="uid://d0uqgywes7s81" path="res://stages/smash/backgroundSmashgame.png" id="1_br13p"]
+[ext_resource type="Texture2D" uid="uid://mmy3aoyagl3k" path="res://stages/smash/cloud drawing actual.png" id="2_326tt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ioso7"]
+size = Vector2(1534, 38)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BackgroundSmashgame" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_br13p")
+
+[node name="BackgroundSmashgame2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("1_br13p")
+
+[node name="CloudDrawingActual" type="Sprite2D" parent="."]
+position = Vector2(1030.5, 770)
+scale = Vector2(2.22812, 1.8491)
+texture = ExtResource("2_326tt")
+
+[node name="floor" type="StaticBody2D" parent="."]
+position = Vector2(-320, 1216)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(1256, -465)
+shape = SubResource("RectangleShape2D_ioso7")
+
+[node name="Label" type="Label" parent="floor"]
+offset_left = 940.0
+offset_top = 80.0
+offset_right = 1789.0
+offset_bottom = 137.0
+text = "floor
+"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 2000
+limit_bottom = 1100
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.0
+drag_right_margin = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="wall" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall"]
+position = Vector2(1152, -571)
+polygon = PackedVector2Array(-984, 1341, -692, 1399, -373, 1415, -16, 1404, 218, 1394, 304, 1368, 366, 1359, 556, 1340)
+
+[node name="Label" type="Label" parent="wall"]
+offset_left = 839.0
+offset_top = 1448.0
+offset_right = 871.0
+offset_bottom = 1497.0
+text = "wall
+
+"
