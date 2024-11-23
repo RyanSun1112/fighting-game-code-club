@@ -2,9 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d0uqgywes7s81" path="res://stages/smash/backgroundSmashgame.png" id="1_7326p"]
 [ext_resource type="Texture2D" uid="uid://mmy3aoyagl3k" path="res://stages/smash/cloud drawing actual.png" id="2_xd2o8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ioso7"]
-size = Vector2(1534, 38)
+[ext_resource type="PackedScene" uid="uid://bpsnypajy2gc6" path="res://floor.tscn" id="3_0t1ge"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -23,30 +21,6 @@ position = Vector2(1030.5, 770)
 scale = Vector2(2.22812, 1.8491)
 texture = ExtResource("2_xd2o8")
 
-[node name="floor" type="StaticBody2D" parent="."]
-position = Vector2(-320, 1216)
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
-position = Vector2(1256, -465)
-shape = SubResource("RectangleShape2D_ioso7")
-
-[node name="Labe" type="Label" parent="floor"]
-offset_left = 940.0
-offset_top = 80.0
-offset_right = 1789.0
-offset_bottom = 137.0
-text = "floor
-"
-
-[node name="Labe2" type="Label" parent="floor"]
-offset_left = 940.0
-offset_top = 80.0
-offset_right = 1789.0
-offset_bottom = 137.0
-text = "floor
-"
-
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
 limit_top = 0
@@ -58,3 +32,5 @@ drag_left_margin = 0.0
 drag_right_margin = 0.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="Node2D" parent="." instance=ExtResource("3_0t1ge")]
