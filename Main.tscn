@@ -14,19 +14,7 @@ position = Vector2(75, 200)
 [node name="StaticBody2D3" parent="." instance=ExtResource("2_7upmu")]
 position = Vector2(150, 200)
 
-[node name="Area2D" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
-
-[node name="CharacterBody2D" parent="Area2D" instance=ExtResource("1_pvio3")]
+[node name="Area2D#CharacterBody2D" parent="." instance=ExtResource("1_pvio3")]
 position = Vector2(0, -700)
 
 [node name="StaticBody2D4" parent="." instance=ExtResource("2_7upmu")]
