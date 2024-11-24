@@ -19,6 +19,8 @@ func _ready():
 
 func _process(delta):
 	tex.texture = m
+	tex.hframes = 4
+	tex.vframes = 4
 	if Input.is_action_pressed(\"ui_right\"):
 		tex.flip_h = false
 		anime.play(\"PositiveAnimations/Moving\")
@@ -27,6 +29,8 @@ func _process(delta):
 		anime.play(\"PositiveAnimations/Moving\")
 	else:
 		tex.texture = i
+		tex.hframes = 3
+		tex.vframes = 2
 		anime.play(\"PositiveAnimations/Idle\")
 	
 
@@ -109,6 +113,7 @@ _data = {
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
+collision_mask = 3
 script = SubResource("GDScript_e8ss3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

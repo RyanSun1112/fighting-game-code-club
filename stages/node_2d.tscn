@@ -36,5 +36,6 @@ editor_draw_drag_margin = true
 
 [node name="floor" parent="." instance=ExtResource("3_0t1ge")]
 
-[node name="Player" parent="." instance=ExtResource("4_vlqjo")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_vlqjo")]
 position = Vector2(500, 0)
+collision_mask = 2
