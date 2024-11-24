@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://co7ko17px0u1c"]
+[gd_scene load_steps=79 format=3 uid="uid://bhysheyfdk0n0"]
 
 [ext_resource type="Texture2D" uid="uid://jnc2vhhrtlng" path="res://Animations/Jump.png" id="1_12bh6"]
 [ext_resource type="Texture2D" uid="uid://bc4c4dljxb8gk" path="res://Animations/Running.png" id="1_41vt1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://5hpn1nrrrmmu" path="res://Animations/Falling.png" id="2_h2kh1"]
 [ext_resource type="Texture2D" uid="uid://0imre5aawibr" path="res://Animations/Landing.png" id="4_524xq"]
 [ext_resource type="Texture2D" uid="uid://dvhwjw8w16yhp" path="res://Animations/NormalAttacks.png" id="6_dwe5q"]
+[ext_resource type="Script" path="res://damage_box.gd" id="7_g3bx2"]
 
 [sub_resource type="GDScript" id="GDScript_e8ss3"]
 script/source = "extends CharacterBody2D
@@ -63,6 +64,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	
+
+
+func _on_area_2d_body_entered(body):
+	
+	pass # Replace with function body.
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0vi37"]
@@ -835,8 +841,11 @@ frame = 1
 [node name="DamageBox" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
 shape = SubResource("CircleShape2D_u7dxk")
 debug_color = Color(0.299449, 0.605143, 0.483855, 0.42)
+script = ExtResource("7_g3bx2")
 
 [node name="DamageBox2" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
 position = Vector2(204, -268)
 shape = SubResource("CircleShape2D_gt2xt")
 debug_color = Color(0.875588, 0.000424321, 0.835182, 0.42)
+
+[connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
