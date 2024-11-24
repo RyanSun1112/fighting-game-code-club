@@ -2,14 +2,8 @@
 =======
 [gd_scene load_steps=78 format=3 uid="uid://co7ko17px0u1c"]
 >>>>>>> 5fc182e3188be6eae441dc5d4f527e7c45127ad3
-
 [ext_resource type="Texture2D" uid="uid://jnc2vhhrtlng" path="res://Animations/Jump.png" id="1_12bh6"]
 [ext_resource type="Texture2D" uid="uid://bc4c4dljxb8gk" path="res://Animations/Running.png" id="1_41vt1"]
-<<<<<<< HEAD
-[ext_resource type="Script" path="res://StateMachine.gd" id="1_k1j2v"]
-
-[sub_resource type="GDScript" id="GDScript_e8ss3"]
-=======
 [ext_resource type="Texture2D" uid="uid://buwvfy12el5cu" path="res://Animations/IdleAnimation.png" id="1_nh2vf"]
 [ext_resource type="Texture2D" uid="uid://5hpn1nrrrmmu" path="res://Animations/Falling.png" id="2_h2kh1"]
 [ext_resource type="Texture2D" uid="uid://0imre5aawibr" path="res://Animations/Landing.png" id="4_524xq"]
@@ -72,7 +66,6 @@ func _physics_process(delta: float) -> void:
 	
 	
 "
->>>>>>> 5fc182e3188be6eae441dc5d4f527e7c45127ad3
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0vi37"]
 radius = 111.355
@@ -175,12 +168,22 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(204, -268)]
 }
+=======
+[gd_scene load_steps=6 format=3 uid="uid://co7ko17px0u1c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwrf4"]
+size = Vector2(117, 127)
+
+[sub_resource type="Animation" id="Animation_l3nej"]
+length = 0.001
+>>>>>>> parent of 95f264d (Merge branch 'main' of https://github.com/RyanSun1112/fighting-game-code-club)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vpo8r"]
 _data = {
 "RESET": SubResource("Animation_l3nej")
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 [sub_resource type="Animation" id="Animation_a6hyx"]
 =======
@@ -357,12 +360,21 @@ tracks/0/imported = false
 tracks/0/enabled = true
 <<<<<<< HEAD
 tracks/0/path = NodePath("Sprite2D:frame")
+=======
+[sub_resource type="Animation" id="Animation_fcnh0"]
+resource_name = "MovingAnimation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:shape")
+>>>>>>> parent of 95f264d (Merge branch 'main' of https://github.com/RyanSun1112/fighting-game-code-club)
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
+<<<<<<< HEAD
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 }
 
@@ -376,6 +388,9 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4]
+=======
+"values": []
+>>>>>>> parent of 95f264d (Merge branch 'main' of https://github.com/RyanSun1112/fighting-game-code-club)
 }
 
 [sub_resource type="Animation" id="Animation_lgucs"]
@@ -397,6 +412,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wx5k6"]
 >>>>>>> 5fc182e3188be6eae441dc5d4f527e7c45127ad3
 _data = {
+<<<<<<< HEAD
 "BasicAttack": SubResource("Animation_1fjvl"),
 "Fall": SubResource("Animation_l581p"),
 "Idle": SubResource("Animation_bjk2q"),
@@ -847,13 +863,20 @@ radius = 61.85
 scale = Vector2(0.25, 0.25)
 collision_mask = 3
 script = SubResource("GDScript_e8ss3")
+=======
+"MovingAnimation": SubResource("Animation_fcnh0")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(0.25, 0.75)
+>>>>>>> parent of 95f264d (Merge branch 'main' of https://github.com/RyanSun1112/fighting-game-code-club)
 
 <<<<<<< HEAD
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_k1j2v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(454, -416)
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_dwrf4")
 =======
 [node name="Hitbox" type="CollisionShape2D" parent="."]
@@ -866,6 +889,7 @@ libraries = {
 "PlayerControlled": SubResource("AnimationLibrary_wx5k6")
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 texture = ExtResource("1_41vt1")
@@ -917,3 +941,6 @@ position = Vector2(204, -268)
 shape = SubResource("CircleShape2D_gt2xt")
 debug_color = Color(0.875588, 0.000424321, 0.835182, 0.42)
 >>>>>>> 5fc182e3188be6eae441dc5d4f527e7c45127ad3
+=======
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+>>>>>>> parent of 95f264d (Merge branch 'main' of https://github.com/RyanSun1112/fighting-game-code-club)
