@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://mmy3aoyagl3k" path="res://stages/Smash/cloud drawing actual.png" id="2_xd2o8"]
 [ext_resource type="PackedScene" uid="uid://bpsnypajy2gc6" path="res://floor.tscn" id="3_0t1ge"]
 [ext_resource type="Script" path="res://stages/stageCamera.gd" id="3_ixyfd"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://blk87e4ombie4" path="res://Deathzone.tscn" id="5_ur6qv"]
 [ext_resource type="PackedScene" uid="uid://bpsnypajy2gc6" path="res://floor.tscn" id="3_0t1ge"]
 [ext_resource type="PackedScene" uid="uid://e22ntuhb8xhc" path="res://Player1.tscn" id="6_wklgi"]
@@ -12,6 +13,12 @@
 [ext_resource type="Script" path="res://player.gd" id="9_cy0eb"]
 [ext_resource type="PackedScene" uid="uid://vbmd8fs01fwm" path="res://player2cool.tscn" id="9_ywt1m"]
 [ext_resource type="Script" path="res://player_2_cool.gd" id="11_2krh1"]
+=======
+[ext_resource type="PackedScene" uid="uid://co7ko17px0u1c" path="res://Player.tscn" id="4_vlqjo"]
+[ext_resource type="PackedScene" path="res://Deathzone.tscn" id="5_ur6qv"]
+[ext_resource type="PackedScene" path="res://Player1.tscn" id="6_wklgi"]
+[ext_resource type="PackedScene" path="res://Player2.tscn" id="7_h8hte"]
+>>>>>>> f30afd30066e9e2631bef0b0cc13f562b2729606
 
 [node name="Node2D" type="Node2D"]
 
