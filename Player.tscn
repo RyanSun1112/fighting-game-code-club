@@ -1,41 +1,123 @@
-[gd_scene load_steps=6 format=3 uid="uid://co7ko17px0u1c"]
+[gd_scene load_steps=9 format=3 uid="uid://co7ko17px0u1c"]
+
+[ext_resource type="Texture2D" uid="uid://bc4c4dljxb8gk" path="res://Animations/Running.png" id="1_41vt1"]
+
+[sub_resource type="GDScript" id="GDScript_e8ss3"]
+script/source = "extends CharacterBody2D
+
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+
+@onready var anime = $CollisionShape2D/AnimationPlayer
+var tex
+var m = preload(\"res://Animations/Running.png\")
+var i = preload(\"res://Animations/IdleAnimation.png\")
+
+func _ready():
+	tex = $CollisionShape2D/Sprite2D
+
+func _process(delta):
+	tex.texture = m
+	tex.hframes = 4
+	tex.vframes = 4
+	if Input.is_action_pressed(\"ui_right\"):
+		tex.flip_h = false
+		anime.play(\"PositiveAnimations/Moving\")
+	elif Input.is_action_pressed(\"ui_left\"):
+		tex.flip_h = true
+		anime.play(\"PositiveAnimations/Moving\")
+	else:
+		tex.texture = i
+		tex.hframes = 3
+		tex.vframes = 2
+		anime.play(\"PositiveAnimations/Idle\")
+	
+
+
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	if Input.is_action_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	var direction := Input.get_axis(\"ui_left\", \"ui_right\")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwrf4"]
-size = Vector2(117, 127)
+size = Vector2(372, 960)
 
 [sub_resource type="Animation" id="Animation_l3nej"]
-length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vpo8r"]
 _data = {
 "RESET": SubResource("Animation_l3nej")
 }
 
-[sub_resource type="Animation" id="Animation_fcnh0"]
-resource_name = "MovingAnimation"
+[sub_resource type="Animation" id="Animation_lcpul"]
+length = 1.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:shape")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": []
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_a6hyx"]
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 2, 3, 4, 5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_khr8y"]
 _data = {
-"MovingAnimation": SubResource("Animation_fcnh0")
+"Idle": SubResource("Animation_a6hyx"),
+"Moving": SubResource("Animation_lcpul")
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-scale = Vector2(0.25, 0.75)
+scale = Vector2(0.25, 0.25)
+collision_mask = 3
+script = SubResource("GDScript_e8ss3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0.5)
+position = Vector2(454, -416)
 shape = SubResource("RectangleShape2D_dwrf4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape2D"]
@@ -44,4 +126,7 @@ libraries = {
 "PositiveAnimations": SubResource("AnimationLibrary_khr8y")
 }
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("1_41vt1")
+hframes = 4
+vframes = 4
