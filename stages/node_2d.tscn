@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8lf7nc8xjd7u"]
+[gd_scene load_steps=10 format=3 uid="uid://c8lf7nc8xjd7u"]
 
 [ext_resource type="Texture2D" uid="uid://d0uqgywes7s81" path="res://stages/Smash/backgroundSmashgame.png" id="1_7326p"]
 [ext_resource type="Texture2D" uid="uid://mmy3aoyagl3k" path="res://stages/Smash/cloud drawing actual.png" id="2_xd2o8"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://Deathzone.tscn" id="5_ur6qv"]
 [ext_resource type="PackedScene" path="res://Player1.tscn" id="6_wklgi"]
 [ext_resource type="PackedScene" path="res://Player2.tscn" id="7_h8hte"]
+[ext_resource type="PackedScene" uid="uid://yx1ugd567r2k" path="res://enemy.tscn" id="9_ubfbp"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -54,5 +55,14 @@ position = Vector2(-336, 1332)
 
 [node name="Label2" parent="." instance=ExtResource("7_h8hte")]
 
+[node name="Enemy" parent="." instance=ExtResource("9_ubfbp")]
+position = Vector2(50, 0)
+scale = Vector2(0.5, 0.5)
+
 [node name="Player" parent="." instance=ExtResource("4_vlqjo")]
+unique_name_in_owner = true
 position = Vector2(1500, 0)
+
+[node name="Enemy2" parent="." instance=ExtResource("9_ubfbp")]
+position = Vector2(500, 0)
+scale = Vector2(0.5, 0.5)
