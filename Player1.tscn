@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://e22ntuhb8xhc"]
+
+[node name="Label" type="Label"]
+offset_left = 100.0
+offset_top = 950.0
+offset_right = 140.0
+offset_bottom = 973.0
+rotation = 0.00210721
+text = "0%"
+horizontal_alignment = 1
+vertical_alignment = 1

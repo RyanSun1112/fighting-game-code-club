@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://btdjmtg1sohq0"]
+[gd_scene load_steps=2 format=3 uid="uid://bpsnypajy2gc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amm4n"]
 size = Vector2(1534, 38)
@@ -12,15 +12,6 @@ position = Vector2(1256, -465)
 shape = SubResource("RectangleShape2D_amm4n")
 
 [node name="Labe3" type="Label" parent="."]
-offset_left = 940.0
-offset_top = 80.0
-offset_right = 1789.0
-offset_bottom = 137.0
-text = "floor
-"
-metadata/_edit_use_anchors_ = true
-
-[node name="Labe4" type="Label" parent="."]
 offset_left = 940.0
 offset_top = 80.0
 offset_right = 1789.0

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://clg1pdfm527m2"]
+
+[node name="Label" type="Label"]
+offset_left = 1600.0
+offset_top = 950.0
+offset_right = 1640.0
+offset_bottom = 973.0
+text = "0%"
+horizontal_alignment = 1
+vertical_alignment = 1
