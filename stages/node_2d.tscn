@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 [gd_scene load_steps=12 format=3 uid="uid://c8lf7nc8xjd7u"]
+=======
+[gd_scene load_steps=9 format=3 uid="uid://c8lf7nc8xjd7u"]
+>>>>>>> 5fc182e3188be6eae441dc5d4f527e7c45127ad3
 
 [ext_resource type="Texture2D" uid="uid://d0uqgywes7s81" path="res://stages/Smash/backgroundSmashgame.png" id="1_7326p"]
 [ext_resource type="Texture2D" uid="uid://mmy3aoyagl3k" path="res://stages/Smash/cloud drawing actual.png" id="2_xd2o8"]
-[ext_resource type="PackedScene" uid="uid://bpsnypajy2gc6" path="res://floor.tscn" id="3_0t1ge"]
+[ext_resource type="PackedScene" uid="uid://btdjmtg1sohq0" path="res://floor.tscn" id="3_0t1ge"]
 [ext_resource type="Script" path="res://stages/stageCamera.gd" id="3_ixyfd"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://blk87e4ombie4" path="res://Deathzone.tscn" id="5_ur6qv"]
 [ext_resource type="PackedScene" uid="uid://e22ntuhb8xhc" path="res://Player1.tscn" id="6_wklgi"]
 [ext_resource type="PackedScene" uid="uid://clg1pdfm527m2" path="res://Player2.tscn" id="7_h8hte"]
@@ -11,6 +16,12 @@
 [ext_resource type="Script" path="res://player.gd" id="9_cy0eb"]
 [ext_resource type="PackedScene" uid="uid://vbmd8fs01fwm" path="res://player2cool.tscn" id="9_ywt1m"]
 [ext_resource type="Script" path="res://player_2_cool.gd" id="11_2krh1"]
+=======
+[ext_resource type="PackedScene" uid="uid://co7ko17px0u1c" path="res://Player.tscn" id="4_vlqjo"]
+[ext_resource type="PackedScene" path="res://Deathzone.tscn" id="5_ur6qv"]
+[ext_resource type="PackedScene" path="res://Player1.tscn" id="6_wklgi"]
+[ext_resource type="PackedScene" path="res://Player2.tscn" id="7_h8hte"]
+>>>>>>> 5fc182e3188be6eae441dc5d4f527e7c45127ad3
 
 [node name="Node2D" type="Node2D"]
 
@@ -57,6 +68,7 @@ position = Vector2(-336, 1332)
 
 [node name="Label2" parent="." instance=ExtResource("7_h8hte")]
 
+<<<<<<< HEAD
 [node name="CharacterBody2D" parent="." instance=ExtResource("8_ew4s5")]
 position = Vector2(488, 680)
 script = ExtResource("9_cy0eb")
@@ -64,3 +76,7 @@ script = ExtResource("9_cy0eb")
 [node name="CharacterBody2D2" parent="." instance=ExtResource("9_ywt1m")]
 position = Vector2(1004, 480)
 script = ExtResource("11_2krh1")
+=======
+[node name="Player" parent="." instance=ExtResource("4_vlqjo")]
+position = Vector2(1500, 0)
+>>>>>>> 5fc182e3188be6eae441dc5d4f527e7c45127ad3
