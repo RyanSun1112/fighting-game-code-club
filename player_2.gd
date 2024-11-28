@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Player1
+class_name Player2
 
 @onready var anime = $AnimationPlayer
 @onready var tex = $AnimatedSprite2D
@@ -12,7 +12,7 @@ var hit = false
 var hit_done = true
 var jump_done = true
 var jumping = false
-var jumped = false
+var jumped = false 
 var mem_jump_count = 0
 var basicattackright_done = true
 var landed = false
@@ -23,7 +23,8 @@ var left = false
 var up = false
 
 func _ready():
-	add_to_group("Player1")
+	add_to_group("Player2")
+			
 #animations
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed(cont.jump):
@@ -41,7 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			anime.play("PlayerControlled/BasicAttackRight")
 		else:
 			anime.play("PlayerControlled/BasicAttackLeft")
-			
+	
 func _process(delta):
 	anime.speed_scale = 1
 	if jump_done:
@@ -88,7 +89,9 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2(-500*percent, -30*percent)
 			hit_done = false
 			hit = false
+		print(velocity)
 		move_and_slide()
+		print(position)
 		
 	if not hit_done:
 		if velocity.x > 0:
@@ -124,7 +127,7 @@ func _physics_process(delta: float) -> void:
 				
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-
+			
 	move_and_slide()
 
 func _on_animation_player_animation_finished(anim_name) -> void:
@@ -136,6 +139,7 @@ func _on_animation_player_animation_finished(anim_name) -> void:
 		normal3 = false
 	if anim_name == "PlayerControlled/Land":
 		landed = true
+		
 
 func _on_hit(x,y):
 	if x > position.x:
@@ -149,10 +153,9 @@ func _on_hit(x,y):
 	hit = true
 	
 func _fell():
-	position.x = 300
+	position.x = 1000
 	position.y = 0
-	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Player2:
-		get_tree().call_group("Player2", "_on_hit", position.x, position.y)
+	if body is Player1:
+		get_tree().call_group("Player1", "_on_hit", position.x, position.y)

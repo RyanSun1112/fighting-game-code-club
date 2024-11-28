@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dvhwjw8w16yhp" path="res://Animations/NormalAttacks.png" id="7_cy834"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7e1c"]
-size = Vector2(392, 837)
+size = Vector2(104, 193)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjdlg"]
 atlas = ExtResource("2_dkhnr")
@@ -753,10 +753,11 @@ collision_mask = 3
 script = ExtResource("1_3y480")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-33, -19.5)
+position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_l7e1c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_l52lo")
 animation = &"Idle"
 frame = 1

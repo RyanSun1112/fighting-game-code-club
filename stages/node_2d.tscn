@@ -5,12 +5,32 @@
 [ext_resource type="PackedScene" uid="uid://bpsnypajy2gc6" path="res://floor.tscn" id="3_0t1ge"]
 [ext_resource type="Script" path="res://stages/stageCamera.gd" id="3_ixyfd"]
 [ext_resource type="PackedScene" uid="uid://co7ko17px0u1c" path="res://Player.tscn" id="4_vlqjo"]
-[ext_resource type="PackedScene" path="res://Deathzone.tscn" id="5_ur6qv"]
+[ext_resource type="PackedScene" uid="uid://g6y1oo4yns3t" path="res://Deathzone.tscn" id="5_ur6qv"]
 [ext_resource type="PackedScene" path="res://Player1.tscn" id="6_wklgi"]
-[ext_resource type="PackedScene" path="res://Player2.tscn" id="7_h8hte"]
-[ext_resource type="PackedScene" uid="uid://yx1ugd567r2k" path="res://enemy.tscn" id="9_ubfbp"]
+[ext_resource type="PackedScene" uid="uid://dxt2mb0vqjjl3" path="res://Player2.tscn" id="8_80fn5"]
+
+[sub_resource type="GDScript" id="GDScript_d7qql"]
+script/source = "extends Node2D
+
+var num = 0
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed(\"connect\"):
+		event.set_device(num)
+		print(\"connected\", event.device)
+		num += 1
+			
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_d7qql")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -53,16 +73,10 @@ position = Vector2(-336, 1332)
 
 [node name="Label" parent="." instance=ExtResource("6_wklgi")]
 
-[node name="Label2" parent="." instance=ExtResource("7_h8hte")]
+[node name="Player" parent="." groups=["Player1"] instance=ExtResource("4_vlqjo")]
+position = Vector2(300, 0)
+scale = Vector2(0.25, 0.25)
 
-[node name="Enemy" parent="." instance=ExtResource("9_ubfbp")]
-position = Vector2(50, 0)
-scale = Vector2(0.5, 0.5)
-
-[node name="Player" parent="." instance=ExtResource("4_vlqjo")]
-unique_name_in_owner = true
-position = Vector2(1500, 0)
-
-[node name="Enemy2" parent="." instance=ExtResource("9_ubfbp")]
-position = Vector2(500, 0)
-scale = Vector2(0.5, 0.5)
+[node name="Player2" parent="." groups=["Player2"] instance=ExtResource("8_80fn5")]
+position = Vector2(1000, 0)
+scale = Vector2(0.25, 0.25)

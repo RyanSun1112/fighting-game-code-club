@@ -1,75 +1,14 @@
-[gd_scene load_steps=79 format=3 uid="uid://bhysheyfdk0n0"]
+[gd_scene load_steps=81 format=3 uid="uid://co7ko17px0u1c"]
 
 [ext_resource type="Texture2D" uid="uid://jnc2vhhrtlng" path="res://Animations/Jump.png" id="1_12bh6"]
 [ext_resource type="Texture2D" uid="uid://bc4c4dljxb8gk" path="res://Animations/Running.png" id="1_41vt1"]
+[ext_resource type="Script" path="res://player.gd" id="1_ktvm3"]
 [ext_resource type="Texture2D" uid="uid://buwvfy12el5cu" path="res://Animations/IdleAnimation.png" id="1_nh2vf"]
+[ext_resource type="Resource" uid="uid://eufdmm0qfhug" path="res://Controlls/player_control_1.tres" id="2_5t8in"]
 [ext_resource type="Texture2D" uid="uid://5hpn1nrrrmmu" path="res://Animations/Falling.png" id="2_h2kh1"]
 [ext_resource type="Texture2D" uid="uid://0imre5aawibr" path="res://Animations/Landing.png" id="4_524xq"]
 [ext_resource type="Texture2D" uid="uid://dvhwjw8w16yhp" path="res://Animations/NormalAttacks.png" id="6_dwe5q"]
 [ext_resource type="Script" path="res://damage_box.gd" id="7_g3bx2"]
-
-[sub_resource type="GDScript" id="GDScript_e8ss3"]
-script/source = "extends CharacterBody2D
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-
-@onready var anime = $AnimationPlayer
-@onready var tex = $AnimatedSprite2D
-
-#animations
-
-func _process(delta):
-	if Input.is_action_pressed(\"ui_accept\"):
-		tex.animation = \"Jump\"
-		anime.play(\"PlayerControlled/Jump\")
-		
-	elif Input.is_action_pressed(\"attack_1\"):
-		tex.animation = \"NormalAttack\"
-		anime.play(\"PlayerControlled/BasicAttack\")
-		
-	elif Input.is_action_pressed(\"ui_right\"):
-		tex.animation = \"Moving\"
-		tex.flip_h = false
-		anime.play(\"PlayerControlled/Move\")
-		
-	elif Input.is_action_pressed(\"ui_left\"):
-		tex.animation = \"Moving\"
-		tex.flip_h = true
-		anime.play(\"PlayerControlled/Move\")
-	
-	else: 
-		tex.animation = \"Idle\"
-		anime.play(\"PlayerControlled/Idle\")
-	
-
-
-func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	if Input.is_action_pressed(\"ui_accept\") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	var direction := Input.get_axis(\"ui_left\", \"ui_right\")
-	
-	if direction:
-		velocity.x = direction * SPEED
-			
-			
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
-	
-	
-
-
-func _on_area_2d_body_entered(body):
-	
-	pass # Replace with function body.
-"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0vi37"]
 radius = 111.355
@@ -127,50 +66,26 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimatedSprite2D/Area2D/DamageBox:disabled")
+tracks/4/path = NodePath("AnimatedSprite2D:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AnimatedSprite2D/Area2D/DamageBox:position")
+tracks/5/path = NodePath("AnimatedSprite2D:offset")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("AnimatedSprite2D/Area2D/DamageBox2:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("AnimatedSprite2D/Area2D/DamageBox2:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(204, -268)]
+"values": [Vector2(120, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vpo8r"]
@@ -178,9 +93,7 @@ _data = {
 "RESET": SubResource("Animation_l3nej")
 }
 
-[sub_resource type="Animation" id="Animation_1fjvl"]
-length = 2.0
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_r1ra5"]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -215,7 +128,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.133333, 0.166667, 0.833333, 0.866667, 0.966667, 1.06667, 1.66667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(172, -240), Vector2(228, -312), Vector2(164, -196), Vector2(228, -312), Vector2(276, -272), Vector2(220, -300), Vector2(232, -280)]
+"values": [Vector2(-300, -248), Vector2(-348, -316), Vector2(-164, -196), Vector2(-352, -312), Vector2(-408, -268), Vector2(-348, -308), Vector2(-348, -288)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -239,7 +152,118 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.366667, 0.466667, 0.6, 1.66667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(172, -264), Vector2(204, -268), Vector2(172, -264), Vector2(224, -304)]
+"values": [Vector2(-288, -268), Vector2(-328, -268), Vector2(-292, -264), Vector2(-348, -288)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-120, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1fjvl"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D/Area2D/DamageBox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.833333, 1.16667, 1.66667, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/Area2D/DamageBox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.133333, 0.166667, 0.833333, 0.866667, 0.966667, 1.06667, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(300, -248), Vector2(348, -316), Vector2(164, -196), Vector2(352, -312), Vector2(408, -268), Vector2(348, -308), Vector2(348, -288)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D/Area2D/DamageBox2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.666667, 1.66667, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D/Area2D/DamageBox2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.366667, 0.466667, 0.6, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(288, -268), Vector2(328, -268), Vector2(292, -264), Vector2(348, -288)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_l581p"]
@@ -371,7 +395,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wx5k6"]
 _data = {
-"BasicAttack": SubResource("Animation_1fjvl"),
+"BasicAttackLeft": SubResource("Animation_r1ra5"),
+"BasicAttackRight": SubResource("Animation_1fjvl"),
 "Fall": SubResource("Animation_l581p"),
 "Idle": SubResource("Animation_bjk2q"),
 "Jump": SubResource("Animation_rrqnb"),
@@ -625,7 +650,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2kg8n")
 }],
-"loop": true,
+"loop": false,
 "name": &"Falling",
 "speed": 6.0
 }, {
@@ -688,7 +713,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tvkp6")
 }],
-"loop": true,
+"loop": false,
 "name": &"Landing",
 "speed": 8.0
 }, {
@@ -741,7 +766,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_87djj")
 }],
-"loop": true,
+"loop": false,
 "name": &"Moving",
 "speed": 16.0
 }, {
@@ -806,7 +831,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gvl5a")
 }],
-"loop": true,
+"loop": false,
 "name": &"NormalAttack",
 "speed": 10.0
 }]
@@ -818,9 +843,11 @@ radius = 61.86
 radius = 61.85
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.2, 0.2)
+collision_layer = 3
 collision_mask = 3
-script = SubResource("GDScript_e8ss3")
+script = ExtResource("1_ktvm3")
+cont = ExtResource("2_5t8in")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0vi37")
@@ -833,19 +860,27 @@ libraries = {
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_k6dk8")
-animation = &"Idle"
+animation = &"Jump"
 frame = 1
+offset = Vector2(120, 0)
+flip_h = true
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="DamageBox" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+position = Vector2(300, -248)
 shape = SubResource("CircleShape2D_u7dxk")
+disabled = true
 debug_color = Color(0.299449, 0.605143, 0.483855, 0.42)
 script = ExtResource("7_g3bx2")
 
 [node name="DamageBox2" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
-position = Vector2(204, -268)
+position = Vector2(288, -268)
 shape = SubResource("CircleShape2D_gt2xt")
+disabled = true
 debug_color = Color(0.875588, 0.000424321, 0.835182, 0.42)
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

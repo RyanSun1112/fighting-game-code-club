@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Controls" load_steps=2 format=3 uid="uid://ddcqci7oe57dg"]
+
+[ext_resource type="Script" path="res://Controlls/player_controls.gd" id="1_6x15r"]
+
+[resource]
+script = ExtResource("1_6x15r")
+player_index = 0
+move_left = "move_l2"
+move_right = "move_r2"
+jump = "jump2"
+attack_1 = "attack_12"
